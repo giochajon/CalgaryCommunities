@@ -6,9 +6,12 @@ import CommunityController from './components/communityController.js'
 function App() {
   return (
     <div className="App">
+      <h3>Compare Calgary residential communities:</h3>
       <header className="App-header">
         
-        <h3>Compare Calgary residential communities:</h3>
+        
+        <CommunityController />
+        <div> <img src={require('./dblarrow.png')} width="100" height="50"/> </div>
         <CommunityController />
       </header>
     	

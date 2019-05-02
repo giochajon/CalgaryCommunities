@@ -1,12 +1,14 @@
 .App {
   text-align: center;
+  background-color: #5c5c70;
+  color: white;
 }
 
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -18,11 +20,15 @@
 }
 
 .bor3 {
+
+
+
 font-size: 15px;    
 float:left;
 color: white;
 background-color: #333333;
 border: inset;
 border-width: 0.01;
+
 } 
 
