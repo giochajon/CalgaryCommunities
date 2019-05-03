@@ -11,7 +11,7 @@ function App() {
         
         
         <CommunityController />
-        <div> <img src={require('./dblarrow.png')} width="100" height="50"/> </div>
+        
         <CommunityController />
       </header>
     	

@@ -56,7 +56,7 @@ class CommunityController extends React.Component {
 
         return (
 
-            <div className = "bor3">
+            <div className = "container">
         <div className = "bor3">  
 
         <Dropdown  >
