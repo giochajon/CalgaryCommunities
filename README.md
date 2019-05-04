@@ -6,9 +6,11 @@
  \____\__,_|_|\__, |\__,_|_|   \__,  \____\___/|_| |_| |_|\__,_|_| |_|_|\__|\__, |___|_| |_|_|  \___/ 
               |___/            |___/                                        |___/                     
 
-Full Stack Project (JS/ React, Python /Flask Postgres and Google Maps API ) to compare Neighborhoods
+Full Stack Project (JS/ React, Python /Flask Postgres, Google Maps API and react-bootstrap ) to compare Calgary Communities (that is our term we Calgarians use as the rough equivalent of what Neighborhoods are)
 
 This project is some sample code to demonstrate the interaction of multiple technologies into a full-stack application.
+
+I came to Calgary about nine years ago and to this day I struggle on where the communities are located, hence the purpose of this app is to help those like me to orient ourselves as Calgary is around the same size as New York.  
 
 The application consist in a tool to compare information of two comminities (neighborhoods) from our awesome city.
 
