@@ -21,7 +21,9 @@ I converted them with python to be google maps compatible
 Also I used the react library created by Tom Cheng to render them in my components, see  https://github.com/tomchentw/react-google-maps ) that is how I implemented the Google Maps API calls -> https://developers.google.com/maps/documentation/javascript/tutorial
 
 
-I created my Postgress database and a flask server to render the data to JSON format to be consumed by asyncronous calls from the REACT front end, I did not use redux as I use only one state (inspired by this article https://web.archive.org/web/20171020192305/http://blog.reactandbethankful.com/posts/2015/09/15/understanding-the-functional-revolution/ which we read and discussed in our program)
+I created my Postgress database and a flask server to render the data to JSON format to be consumed by asyncronous calls from the REACT front end, I did not use redux as I use only one state (inspired by this article https://web.archive.org/web/20171020192305/http://blog.reactandbethankful.com/posts/2015/09/15/understanding-the-functional-revolution/ which we read and discussed in our EvolveU program) 
+
+This also serves the purpose of fulfill competency #250 :-)
 
 
 
