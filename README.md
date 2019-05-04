@@ -1,4 +1,6 @@
 # CalgaryCommunities
+
+(below is a doodle readable when you open the readmefile on any text editor)
   ____      _                         ____                            _ _         ___        __       
  / ___|__ _| | __ _  __ _ _ __ _   _ / ___|___  _ __ ___  _   _ _ __ (_| |_ _   _|_ _|_ __  / _| ___  
 | |   / _` | |/ _` |/ _` | '__| | | | |   / _ \| '_ ` _ \| | | | '_ \| | __| | |  | || '_ \| |_ / _ \ 
