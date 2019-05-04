@@ -1,0 +1,1 @@
+SELECT json_agg( name::TEXT order by name ) from census2018 where class = 'Residential'  

@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Polyline } from 'react-google-maps';
 
 
-const google = window.google = window.google ? window.google : {} 
+//const google = window.google = window.google ? window.google : {} 
 
 class Map extends Component {
 	
    render() {
-   const GoogleMapExample = withGoogleMap(props => (
+   const GoogleMapGio = withGoogleMap(props => (
       <GoogleMap
         defaultCenter = {this.props.centre}
-        defaultZoom = { 13 }
+        defaultZoom = { 12 }
       >
       <Polyline path= {this.props.flightpath} options={{ 
   strokeColor: '#FF0000',
@@ -25,10 +25,10 @@ class Map extends Component {
       </GoogleMap>
    ));
    return(
-      <div>
-        <GoogleMapExample
-          containerElement={ <div style={{ height: `350px`, width: '350px' }} /> }
-          mapElement={ <div style={{ height: `100%` }} /> }
+      <div className = "mapborder">
+        <GoogleMapGio
+          containerElement={ <div style={{ height: `300px`, width: '300px' }} /> }
+          mapElement={ <div style={{ height: `90%` }} /> }
         />
       </div>
    );

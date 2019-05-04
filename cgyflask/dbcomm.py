@@ -8,6 +8,7 @@ def retreive(consulta,condicion):
 
     try:
         connection = psycopg2.connect(user = "postgres",password = "postgres",host = "192.168.1.69",port = "5432",database = "cgyinfo")
+        #connection = psycopg2.connect(user = "postgres",password = "postgres",host = "10.44.22.93",port = "5432",database = "cgyinfo")
         connection.autocommit = True
         cursor = connection.cursor()
         ###cursor.execute("select comm_code, name, sector, class, res_cnt,dwell_cnt, comm_structure from census2018 where name = %s",(nombre,))
@@ -42,10 +43,10 @@ def traiga(nombre):
     #consulta = ("select array_to_json(array_agg(row_to_json(t)))from (select comm_code, name, sector, class, res_cnt,dwell_cnt, comm_structure, gcoord,gcenter from census2018 where name = %s) t",(nombre,))
     consulta = u"select array_to_json(array_agg(row_to_json(t)))from (select comm_code, name, sector, class, res_cnt,dwell_cnt, comm_structure, gcoord,gcenter from census2018 where name = %s) t"
     cond = [nombre]
-    return retreive(consulta,cond)
+    return retreive(consulta,cond)[0]
 
 def miarreglo():
-    consulta = "SELECT json_agg( name::TEXT ) from census2018 where class = 'Residential'"
+    consulta = "SELECT json_agg( name::TEXT order by name ) from census2018 where class = 'Residential'  "
     cond = ""
     return retreive(consulta,cond)[0]
 

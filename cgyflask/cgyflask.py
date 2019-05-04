@@ -1,8 +1,10 @@
 import dbcomm
 from flask import Flask
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
-
+CORS(app)
 
 
 
@@ -15,12 +17,14 @@ def index():
 @app.route('/community/')
 def listcom():
     lacom = dbcomm.miarreglo()
-    return "{}".format(lacom)
+    #return "{}".format(lacom)
+    return json.dumps(lacom)
 
 @app.route('/community/<name>')
 def getdata(name):
     lacom = dbcomm.traiga(name)
-    return "{}".format(lacom)
+    #return "{}".format(lacom)
+    return json.dumps(lacom)
 
 if __name__ == '__main__':
     app.run()
