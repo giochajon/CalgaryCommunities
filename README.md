@@ -27,7 +27,9 @@ I created my Postgress database and a flask server to render the data to JSON fo
 
 This also serves the purpose of fulfill competency #250 :-)
 
-
+The running React front-end app is published in: https://calgary-communities.herokuapp.com/ 
+the flask server is in: https://cgyflask-api-heroku.herokuapp.com/
+finally the Postgres database server currently is hosted on Amazon AWS
 
 
 
