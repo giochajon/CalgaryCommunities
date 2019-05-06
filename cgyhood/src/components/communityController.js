@@ -144,10 +144,12 @@ class CommunityController extends React.Component {
                 p1.then(
                     function(val) {
                         this.setObtainedValues()
+                        this.setState({ comm: value });
                         console.log(val)
                     }).catch(
                     (reason) => {
                         this.getLocal(value)
+                        this.setState({ comm: value });
                         console.log(reason)
                     });
 
@@ -186,7 +188,7 @@ class CommunityController extends React.Component {
                     <p>Area in the city: {this.sector}</p>
                     <p>Number of residents: {this.res_cnt} </p>
                     <p>Number of dwellings: {this.dwell_cnt} </p>
-                    <p>Build around: {this.comm_structure} </p>
+                    <p>Built around: {this.comm_structure} </p>
                     <div className = "mapborder">
                     <Map centre={this.gcenter} flightpath={this.gcoord} />
                     </div>
