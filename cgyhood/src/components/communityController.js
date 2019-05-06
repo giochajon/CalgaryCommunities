@@ -17,8 +17,8 @@ class CommunityController extends React.Component {
         this.sector = null
         this.dwell_cnt = null
         this.comm_structure = null
-        this.gcoord = null
-        this.gcenter = { lat: 51.044270, lng: -114.062019 } //calgary tower
+        this.gcoord = []
+        this.gcenter = { lat: 51.044270, lng: -114.062019 } //calgary tower center
     }
 
 
@@ -27,12 +27,13 @@ class CommunityController extends React.Component {
     componentWillMount() {
 
         this.populateDropdown()
-        this.populateData('ALTADORE')
-   }
+        //this.populateData('ALTADORE')
+    }
 
 
     populateDropdown() {
-        fetch('http://localhost:5000/community', {
+        fetch('https://cgyflask-api-heroku.herokuapp.com/community/', {
+        //fetch('http://127.0.0.1:5000/community/', {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
@@ -41,15 +42,17 @@ class CommunityController extends React.Component {
             .then(r => {
                 this.setState({ dropList: r })
             })
-            .catch(err => {console.log(err)
-                this.setState({ dropList: defaultDrop })  
-                console.log('default loaded')     })
+            .catch(err => { //console.log(err)
+                this.setState({ dropList: defaultDrop })
+                console.log('default loaded')
+            })
 
     }
 
 
-    populateData(comm) {
-        fetch('http://localhost:5000/community/' + comm, {
+    async populateData(comm) {
+        await fetch('https://cgyflask-api-heroku.herokuapp.com/community/' + comm + "/", {
+        //await fetch('http://localhost:5000/community/' + comm + "/", {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
@@ -57,10 +60,15 @@ class CommunityController extends React.Component {
             .then(r => r.json())
             .then(r => {
                 this.cityData = r
+                //console.log("hey", r)
+                return true
+
             })
-            .catch(err => {console.log(err)
-                           this.cityData = defaultData 
-                           console.log('default loaded') })
+            .catch(err => { //console.log(err)
+                this.cityData = defaultData
+                console.log('default loaded')
+                return false
+            })
 
     }
 
@@ -79,11 +87,10 @@ class CommunityController extends React.Component {
         </Dropdown>)
 
     }
+    getLocal = (value) => {
 
+        this.cityData = defaultData
 
-    onClickHandler = event => {
-        const value = event.target.innerHTML;
-        this.populateData(value)
         let coord
         let center
         for (var i = 0; i < this.cityData.length; i++) {
@@ -103,8 +110,63 @@ class CommunityController extends React.Component {
 
         this.gcoord = JSON.parse(coord)
         this.gcenter = JSON.parse(center)
-        this.setState({ comm: value });
+    }
 
+
+    setObtainedValues() {
+        let coord
+        let center
+
+        this.sector = this.cityData[0].sector
+        this.res_cnt = this.cityData[0].res_cnt
+        this.dwell_cnt = this.cityData[0].dwell_cnt
+        this.comm_structure = this.cityData[0].comm_structure
+        coord = this.cityData[0].gcoord
+        center = this.cityData[0].gcenter
+
+        this.gcoord = JSON.parse(coord)
+        this.gcenter = JSON.parse(center)
+
+    }
+
+
+
+
+    onClickHandler = event => {
+        const value = event.target.innerHTML;
+
+        
+        
+                let p1 = new Promise(
+                    (resolve, reject) => {
+                        this.populateData(value)
+                    });
+                p1.then(
+                    function(val) {
+                        this.setObtainedValues()
+                        console.log(val)
+                    }).catch(
+                    (reason) => {
+                        this.getLocal(value)
+                        console.log(reason)
+                    });
+
+        this.getLocal(value)
+
+/*
+        let promise3 = new Promise(resolve, reject) => {
+            if (this.populateData(value)) {
+               
+            } else {
+                this.getLocal(value)
+            }
+        });
+*/
+
+
+
+        //console.log("pst", this.cityData)
+        this.setState({ comm: value });
     }
 
 

@@ -16,11 +16,7 @@ class Map extends Component {
   strokeColor: '#FF0000',
   strokeOpacity: 1,
   strokeWeight: 2,
-  icons: [{ 
-    icon: "hello",
-    offset: '0',
-    repeat: '10px'
-  }],
+ 
 }} />
       </GoogleMap>
    ));
