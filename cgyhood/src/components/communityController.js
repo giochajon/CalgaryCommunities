@@ -1,8 +1,8 @@
 import React from 'react'
-import Map from "./Map"
 import Dropdown from 'react-bootstrap/Dropdown'
 import defaultData from "../offlineData/offlineCommunities.json";
 import defaultDrop from "../offlineData/offlineCommunityName.json"
+import Smap from "./Smap"
 
 class CommunityController extends React.Component {
     constructor(props) {
@@ -190,7 +190,7 @@ class CommunityController extends React.Component {
                     <p>Number of dwellings: {this.dwell_cnt} </p>
                     <p>Built around: {this.comm_structure} </p>
                     <div className = "mapborder">
-                    <Map centre={this.gcenter} flightpath={this.gcoord} />
+                    <Smap isMarkerShown centre={this.gcenter} flightpath={this.gcoord} />
                     </div>
                 </div>
 
