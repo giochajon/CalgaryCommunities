@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #ffffff;
+  
   color: #0eba0b;
   display: flex;
   flex-direction: column;
@@ -8,14 +8,14 @@
 }
 
 .App-header {
-  background-color: #ffff;
+  /*background-color: #ffff;*/
   min-height: 95vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  /*color: white;*/
 }
 
 .App-link {
@@ -49,4 +49,15 @@ box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.4);
  
     margin-left: 10px;
     margin-right: 10px;
+}
+
+
+.particles {
+  background-color: #ffffff;
+    position: fixed;
+  right: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 }
