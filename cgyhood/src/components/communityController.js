@@ -15,7 +15,8 @@ class CommunityController extends React.Component {
         this.comName = this.props.comName
         this.cityData = null
         this.sector = null
-        this.dwell_cnt = null
+        this.res_cnt = 0
+        this.dwell_cnt = 0
         this.comm_structure = null
         this.gcoord = []
         this.gcenter = { lat: 51.044270, lng: -114.062019 } //calgary tower center
@@ -173,9 +174,53 @@ class CommunityController extends React.Component {
 
 
     render() {
+        
+
+        let theSector; 
+        switch  (this.sector) {
+        case "SOUTHEAST":
+            theSector = "SE"
+        break; 
+        case "SOUTHWEST":
+            theSector = "SW"
+        break;
+        case "SOUTH":
+            theSector = "S"
+        break;
+        case "NORTHEAST":
+            theSector = "NE"
+        break;
+        case "NORTHWEST":
+            theSector = "NW"
+        break;
+        case "CENTRE":
+            theSector = "C"
+        break;
+        case "NORTH":
+            theSector = "N"
+        break;
+        case "EAST":
+            theSector = "E"
+        break;
+        case "WEST":
+            theSector = "W"
+        break;
+        default: 
+        theSector = null
+
+        }
+
+
+
+       
 
 
         return (
+            
+            
+
+
+
 
             <div className="container">
                 <div className="bor3">
@@ -184,10 +229,10 @@ class CommunityController extends React.Component {
                     {this.dropdwn()}
                     <br/>
 
-                    <u> {this.state.comm}</u>
-                    <p>Area in the city: {this.sector}</p>
-                    <p>Number of residents: {this.res_cnt} </p>
-                    <p>Number of dwellings: {this.dwell_cnt} </p>
+                    <u> {this.state.comm} </u>  ({theSector}) 
+                    
+                    <p>Number of residents: {this.res_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
+                    <p>Number of dwellings: {this.dwell_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
                     <p>Built around: {this.comm_structure} </p>
                     <div className = "mapborder">
                     <Smap isMarkerShown centre={this.gcenter} flightpath={this.gcoord} />
