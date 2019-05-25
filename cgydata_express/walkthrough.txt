@@ -1,0 +1,40 @@
+
+
+Steps to create env
+
+1. to start the project and get you package.json run:
+
+npm init -y
+
+2 install dependencies:
+
+2.1 install nodemon (to make live changes on the fly) 
+
+npm install nodemon --save-dev
+
+2.2 install express (express is the API server)
+
+npm install express --save-dev
+
+2.3 install babel (to use JS6 code)
+
+npm install @babel/core @babel/node --save-dev
+
+
+2.4 install  knex (the driver to the PG DB)  
+
+npm install knex --save-dev
+
+2.5 install postgress driver
+npm install pg --save-dev
+
+2.6 install library for environment variables 
+npm install dotenv --save-dev
+
+
+3. configuration
+
+3.1 edit the package.json file and add in the scripts section so it pulls server.js everytime you run npm start  "start": "nodemon server.js", 
+
+
+
