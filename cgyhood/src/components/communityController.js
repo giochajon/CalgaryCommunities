@@ -130,7 +130,7 @@ class CommunityController extends React.Component {
 
     }
 
-
+  
 
 
     onClickHandler = event => {
@@ -154,7 +154,12 @@ class CommunityController extends React.Component {
                         console.log(reason)
                     });
 
+
+        this.props.callbackFromParent(value)                
         this.getLocal(value)
+        
+
+        
 
 /*
         let promise3 = new Promise(resolve, reject) => {
@@ -165,12 +170,12 @@ class CommunityController extends React.Component {
             }
         });
 */
-
-
-
         //console.log("pst", this.cityData)
         this.setState({ comm: value });
     }
+
+  
+
 
 
     render() {
@@ -194,7 +199,7 @@ class CommunityController extends React.Component {
             theSector = "NW"
         break;
         case "CENTRE":
-            theSector = "C"
+            theSector = "CENTRE"
         break;
         case "NORTH":
             theSector = "N"

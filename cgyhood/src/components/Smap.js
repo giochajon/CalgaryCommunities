@@ -41,6 +41,5 @@ const Smap = compose(
   </div>
 ));
 
-console.log('hola',process.env.REACT_APP_GOOGLEMAPS_API_KEY)
 
 export default Smap; 

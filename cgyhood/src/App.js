@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 //import Map from './components/Map.js'
-import CommunityController from './components/communityController.js'
+//import CommunityController from './components/communityController.js'
+import GraphController from "./components/graphContainer"
 //import HttpsRedirect from 'react-https-redirect'
 
 import Particles from 'react-particles-js'
@@ -42,9 +43,7 @@ function App() {
       
       <h3>Compare Calgary residential communities:</h3>
       <header className="App-header">
-        <CommunityController />
-        
-        <CommunityController />
+      <GraphController />
       </header>
     	
         
