@@ -64,9 +64,9 @@ class Compass extends React.Component {
 
         return (
                           
-            <div>
-                {cardinal}
-            </div>
+            
+            <div style={{display : 'inline-block'}} >  {cardinal} </div>
+            
         );
     }
 }

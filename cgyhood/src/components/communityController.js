@@ -235,7 +235,7 @@ class CommunityController extends React.Component {
                     {this.dropdwn()}
                     <br/>
 
-                    <u> {this.state.comm} </u>  ({theSector})  <Compass cardinal={theSector} imgheight="40" imgwidth="40"/>
+                    <u> {this.state.comm} </u><Compass cardinal={theSector} imgheight="40" imgwidth="40"/>
                     
                     <p>Number of residents: {this.res_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
                     <p>Number of dwellings: {this.dwell_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
