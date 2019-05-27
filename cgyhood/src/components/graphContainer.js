@@ -36,7 +36,8 @@ class GraphController extends React.Component {
             })
             .catch(err => { //console.log(err)
                 //this.setState({ dropList: defaultDrop })
-                console.log('default loaded')
+                console.log('err:',err)
+                alert('Sorry, no data available for this communities at this time')
             })
 
     }
