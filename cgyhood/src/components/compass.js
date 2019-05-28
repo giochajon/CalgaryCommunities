@@ -30,13 +30,13 @@ class Compass extends React.Component {
         //console.log(this.props.cardinal)
         let cardinal; 
         switch  (this.props.cardinal) {
-        case "C"||"Centre"||"Center":
+        case "C"||"Centre"||"Center" ||"CENTER" :
             cardinal = <img src={C} width={imgwidth} height={imgheight} alt="Center" />;
         break; 
-        case "E"||"East":
+        case "E"||"East"||"EAST":
             cardinal = <img src={E} width={imgwidth} height={imgheight} alt="E" />;
         break;
-        case "N"||"North":
+        case "N"||"North"||"NORTH":
             cardinal = <img src={N} width={imgwidth} height={imgheight} alt="N" />;
         break;
         case "NE"||"NORTHEAST":

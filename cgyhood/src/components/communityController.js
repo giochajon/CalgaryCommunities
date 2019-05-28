@@ -241,7 +241,7 @@ class CommunityController extends React.Component {
                     <p>Number of dwellings: {this.dwell_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
                     <p>Built around: {this.comm_structure} </p>
                     <div className = "mapborder">
-                    <Smap isMarkerShown centre={this.gcenter} flightpath={this.gcoord} />
+                    <Smap isMarkerShown centre={this.gcenter} flightpath={this.sector} />
                     </div>
                 </div>
 
