@@ -16,7 +16,7 @@ return ( <div>
 
 	<p className = "descrip">This project objective is to demonstrate the interaction of multiple technologies into a full-stack application.</p>
 
-	<p className = "descrip"> The idea came up because us, as most Calgarians, struggle with the 200+ communities, this app all shows where the communities are located and additional info, as you may know, Calgary is around the same size as New York. </p>
+	<p className = "descrip"> The idea came to us, because like most Calgarians, we struggle with locating and comparing the communities. It could be used if you wish to move to a new neighborhood or start a business. Calgary is around the same size as New York and hass 200+ communities, so this can help.   </p>
 
 	
 	<p className = "descrip">The information we present was obtained from the data provided by <a href="https://data.calgary.ca/">open data available from the city of Calgary </a> </p>
