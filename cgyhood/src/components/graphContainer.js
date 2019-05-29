@@ -32,10 +32,13 @@ class GraphController extends React.Component {
             })
             .then(r => r.json())
             .then(r => {
-               this.setState({ data1: r[0] })
-               this.setState({ data2: r[1] })
-               this.displayGraph()
-               
+                if( r.length == 1) {
+                    this.setState({ data1: r[0] })
+                    this.setState({ data2: r[0] })     
+                } else {
+                    this.setState({ data1: r[0] })
+                    this.setState({ data2: r[1] })
+                }
             })
             .catch(err => { 
                 console.log('err:',err)
