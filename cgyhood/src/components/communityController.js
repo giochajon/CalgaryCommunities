@@ -237,8 +237,8 @@ class CommunityController extends React.Component {
 
                     <u> {this.state.comm} </u><Compass cardinal={theSector} imgheight="40" imgwidth="40"/>
                     
-                    <p>Number of residents: {this.res_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
-                    <p>Number of dwellings: {this.dwell_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p>
+                    {/* <p>Number of residents: {this.res_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p> */}
+                    {/* <p>Number of dwellings: {this.dwell_cnt.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </p> */}
                     <p>Built around: {this.comm_structure} </p>
                     <div className = "mapborder">
                     <Smap isMarkerShown centre={this.gcenter} flightpath={this.gcoord} />

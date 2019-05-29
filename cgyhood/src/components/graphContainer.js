@@ -108,7 +108,7 @@ class GraphController extends React.Component {
         }
         return (
             <div>           
-                {comms}
+                {/* {comms} */}
                 <div className="bor3">
                     <p className="descrip"> 
                         <IosInformationCircleOutline 
@@ -119,7 +119,9 @@ class GraphController extends React.Component {
                         /> 
                     </p>
                     {/* <p> {this.state.city1} VS {this.state.city2} </p> */}
-                    {info}        
+                   
+                    {info}
+                    {comms}        
                 </div>
             </div>
         );
