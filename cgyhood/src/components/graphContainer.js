@@ -89,8 +89,8 @@ a.push (<div className="App">
             if (this.showAbout === true) {comms = null; info = <About/>  } 
             else {
 
-comms =      (           <CommunityController callbackFromParent={this.myCallback1} />
-        <CommunityController callbackFromParent={this.myCallback2}/> );
+comms =      (    <div className="App-header">       <CommunityController callbackFromParent={this.myCallback1} />
+        <CommunityController callbackFromParent={this.myCallback2}/> </div> );
 
 
 
@@ -109,7 +109,7 @@ comms =      (           <CommunityController callbackFromParent={this.myCallbac
     
     
             return (
-                <div className="App-header">
+                <div >
                 
                    
                 {comms}
