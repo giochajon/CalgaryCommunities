@@ -8,7 +8,7 @@
  \____\__,_|_|\__, |\__,_|_|   \__,  \____\___/|_| |_| |_|\__,_|_| |_|_|\__|\__, |___|_| |_|_|  \___/ 
               |___/            |___/                                        |___/                     
 
-Created by Giovanni Chajon and Alex Jinga
+Created by Giovanni Chajon (https://www.linkedin.com/in/giochajon/) and Alex Jinga (https://www.linkedin.com/in/alex-jinga/)
 
 The application consists of a tool to compare side by side information on two communities (neighborhoods) from our awesome city.
 
