@@ -54,6 +54,14 @@ class Chart extends Component{
                             // display:this.props.displayLegend,
                             // position:this.props.legendPosition
                         },
+                        scales: {
+                            xAxes: [{
+                              ticks: {
+                                beginAtZero: true,
+                                min: 0
+                              }    
+                            }]
+                          }
                     }}
                 />
             </div>
