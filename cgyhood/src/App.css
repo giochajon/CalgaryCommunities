@@ -23,7 +23,7 @@ u {
 
 .App-header {
   /*background-color: #ffff;*/
-  min-height: 95vh;
+  /* min-height: 80vh; */
   display: flex;
   flex-direction: row;
   /* align-items: center; */
@@ -46,6 +46,7 @@ border: inset;
 border-width: 0.01;
 */
 box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.4);
+margin-bottom: 20px
 } 
 
 
