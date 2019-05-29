@@ -17,12 +17,13 @@ class GraphController extends React.Component {
          data2:"",
         }
         this.toggle = 0
+      
         this.showAbout = false
     }
 
 
     populateCompData(comm1,comm2) {
-      this.toggle= 0
+      
         let linka = "https://cgy-node-knex.herokuapp.com/compare/"+comm1+"/"+comm2
         fetch(linka, {
                 method: 'GET',
@@ -40,6 +41,7 @@ class GraphController extends React.Component {
                 console.log('err:',err)
                 alert('Sorry, no data available for this communities at this time')
             })
+            this.toggle= 1
 
     }
 
