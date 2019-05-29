@@ -10,77 +10,29 @@ class GraphController extends React.Component {
         this.state = {
         city1:null,
         city2:null,
-        // data1:null,
-        // data2:null
-        chartData : { 
-            labels: ["data1.name", "data2.name"],
-            datasets:[
-              {
-                label:'',
-                data:[
-                  0,
-                  0,
-                ],
-                backgroundColor:[
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(54, 162, 235, 0.6)',
-                ]
-              }
-            ]
-          }
+         data1:{"comm_code":"ALT","name":"ALTADORE","res_cnt":"6831","dwell_cnt":"3218","prsch_chld":"677","ownshp_cnt":"1945","hotel_cnt":"2"},
+         data2:{"comm_code":"SNA","name":"SUNALTA","res_cnt":"3268","dwell_cnt":"2172","prsch_chld":"150","ownshp_cnt":"469","hotel_cnt":"1"}
         }
-        
-        //this.data1 = null
-        //this.data2 = null   
+        this.toggle = 0
     }
 
-    // componentWillMount(){
-    //     this.getChartData();
-    //   }
-
-    getChartData = (data1, data2) =>{
-        // Ajax calls here
-        console.log ('data1',data1.name)
-        console.log ('data2',data2.name)
-        this.setState({
-          chartData : { 
-            labels: [data1.name, data2.name],
-            datasets:[
-              {
-                label:'',
-                data:[
-                  617594,
-                  181045,
-                ],
-                backgroundColor:[
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(54, 162, 235, 0.6)',
-                ]
-              }
-            ]
-          }
-        })
-        console.log ("state chartdata",this.state.chartData)
-      }
 
     populateCompData(comm1,comm2) {
+      this.toggle= 0
         let linka = "https://cgy-node-knex.herokuapp.com/compare/"+comm1+"/"+comm2
         fetch(linka, {
-        //fetch('http://127.0.0.1:5000/community/', {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
             })
             .then(r => r.json())
             .then(r => {
-                //this.setState({ dropList: r })
-                console.log(linka,r)
-                //this.data1 = r[0]
-                //this.data2 = r[1]  
-               this.getChartData(r[0], r[1])
+               this.setState({ data1: r[0] })
+               this.setState({ data2: r[1] })
+               
+               this.displayGraph()
             })
-            .catch(err => { //console.log(err)
-                //this.setState({ dropList: defaultDrop })
+            .catch(err => { 
                 console.log('err:',err)
                 alert('Sorry, no data available for this communities at this time')
             })
@@ -89,27 +41,55 @@ class GraphController extends React.Component {
 
     myCallback1 = (citycode) => { 
         this.setState({ city1: citycode });
-        // this.populateCompData_1(this.state.city1);
-        // console.log (this.state.data1)
+        this.toggle++
+        
     }
 
     myCallback2 = (citycode) => { 
         this.setState({ city2: citycode });
+        this.toggle++
     }
 
     displayGraph = () => {
-        return(
-            <div className="App">
-                    <Chart chartData={this.state.chartData} location="Calgary" legendPosition="bottom"/>
-            </div>
-        )
+      let a = []
+      a.push (<div className="App">
+      <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Population" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.res_cnt} val2={this.state.data2.res_cnt} mtitle="Population" legendPosition="bottom"/>
+      </div>)
+
+    a.push (<div className="App">
+    <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Population" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.dwell_cnt} val2={this.state.data2.dwell_cnt} mtitle="Dwellings" legendPosition="bottom"/>
+    </div>)
+
+a.push (<div className="App">
+    <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Population" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.ownshp_cnt} val2={this.state.data2.ownshp_cnt} mtitle="Home Owners" legendPosition="bottom"/>
+    </div>)
+
+a.push (<div className="App">
+    <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Population" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.prsch_chld} val2={this.state.data2.prsch_chld} mtitle="Pre-school Children" legendPosition="bottom"/>
+    </div>)
+
+
+
+
+      return a 
     } 
 
         render() {
-            let info = ""
-            if (this.state.data1) {
-            info =  JSON.stringify (this.state.data1) + "and" + JSON.stringify (this.state.data2)
+            let info = null
+
+
+
+            if (this.toggle>=2) {
+              info = <button onClick={() => {
+                this.populateCompData(this.state.city1,this.state.city2)
+             } 
+             } > GET DATA</button>
+  
             }
+             
+            else {info = this.displayGraph()}
+
+            if (this.city2 = null) {info = null;}
     
     
             return (
@@ -122,16 +102,12 @@ class GraphController extends React.Component {
                 
     
                 <div className="bor3">
-                <p> {this.state.city1} VS {this.state.city2} </p>
-                <button onClick={() => {
-                   this.populateCompData(this.state.city1,this.state.city2)
-                } 
-                } > GET DATA</button>
-
-                {/* {this.displayGraph()} */}
-                <Chart chartData={this.state.chartData} location="Calgary" legendPosition="bottom"/>
                 
+                <p> {this.state.city1} VS {this.state.city2} </p>
                 {info}
+
+                
+                
                 </div>
                 </div>
             );

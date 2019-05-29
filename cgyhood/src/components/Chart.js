@@ -6,7 +6,23 @@ class Chart extends Component{
     constructor(props){
         super(props);
         this.state = {
-            chartData:props.chartData
+            chartData : { 
+                labels: [this.props.lb1, this.props.lb2],
+                datasets:[
+                  {
+                    label:this.props.tit,
+                    data:[
+                      parseInt(this.props.val1),
+                      parseInt(this.props.val2)
+                    ],
+                    backgroundColor:[
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                    ]
+                  }
+                ]
+              }
+    
         }
     }
 
@@ -20,7 +36,7 @@ class Chart extends Component{
     ShowBarGraph = () => {
         return(
             <div className="chart">
-                <p>test</p>
+               
                 <HorizontalBar
                     data={this.state.chartData}
                     width={100}
@@ -29,7 +45,7 @@ class Chart extends Component{
                         maintainAspectRatio: true,
                         title:{ 
                             display:this.props.displayTitle,
-                            text:'Largest Cities In '+this.props.location,
+                            text:this.props.mtitle,
                             fontSize:15
                         },
                         legend:{
@@ -68,7 +84,8 @@ class Chart extends Component{
 
 
   render(){
-    console.log("state in Chart class", this.state.chartData)
+    
+
     return (
         <div>
             <div className = 'GraphContainer'>
