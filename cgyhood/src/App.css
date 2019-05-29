@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
 body{
-  font-family: 'Righteous', cursive;;
+  font-family: 'Righteous', cursive;
   
 }
 
 p {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: .0;
 }
 
 .App {
@@ -17,14 +17,18 @@ p {
   align-items: center;
 }
 
+u {
+  font-size: calc(7px + 2vmin);
+}
+
 .App-header {
   /*background-color: #ffff;*/
   min-height: 95vh;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(4px + 2vmin);
   /*color: white;*/
 }
 
@@ -74,8 +78,9 @@ box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.4);
 
 .descrip {
   font-size: calc(4px + 2vmin);
-  text-align: left;
-  color: #4286f4
+  text-align: justify;
+  color: gray;
+  margin-bottom: 15px
 }
 
 
@@ -88,3 +93,13 @@ box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.4);
     flex: 2;
   }
 }
+
+.AboutText {
+  width: 720px;
+  margin: 20px;
+}
+
+.image-bor {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.4);
+}
+
