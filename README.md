@@ -8,28 +8,26 @@
  \____\__,_|_|\__, |\__,_|_|   \__,  \____\___/|_| |_| |_|\__,_|_| |_|_|\__|\__, |___|_| |_|_|  \___/ 
               |___/            |___/                                        |___/                     
 
-Full Stack Project (JS/ React, Python /Flask Postgres, Google Maps API and react-bootstrap ) to compare Calgary Communities (that is our term we Calgarians use as the rough equivalent of what Neighborhoods are)
+Created by Giovanni Chajon and Alex Jinga
 
-This project is some sample code to demonstrate the interaction of multiple technologies into a full-stack application.
+The application consists of a tool to compare side by side information on two communities (neighborhoods) from our awesome city.
 
-I came to Calgary about nine years ago and to this day I struggle on where the communities are located, hence the purpose of this app is to help those like me to orient ourselves as Calgary is around the same size as New York.  
+It is a Full Stack Project (JS/ React, Python /Flask Postgres, Node /express Google Maps API and react-bootstrap ) to compare Calgary Communities (that is the term we Calgarians use as the rough equivalent of what Neighborhoods are).
 
-The application consist in a tool to compare information of two comminities (neighborhoods) from our awesome city.
+This project objective is to demonstrate the interaction of multiple technologies into a full-stack application.
 
-The information was obtained from the data provided by open data available from the city of calgary site (see) => https://data.calgary.ca/
+The idea came to us, because like most Calgarians, we struggle with locating and comparing the communities. It could be used if you wish to move to a new neighborhood or start a business. Calgary is around the same size as New York and hass 200+ communities, so this can help.
 
-As the multipoligon and points to draw the limits and center on the locations of the communities were in arcGis format,
-I converted them with python to be google maps compatible 
-Also I used the react library created by Tom Cheng to render them in my components, see  https://github.com/tomchentw/react-google-maps ) that is how I implemented the Google Maps API calls -> https://developers.google.com/maps/documentation/javascript/tutorial
+The information we present was obtained from the data provided by open data available from the city of Calgary
 
+The multipoligon and points to draw the limits and center on the locations of the communities were converted from arcGis format, we converted them with python to be google maps compatible. Also, we used the react library created byTom Cheng to render them into components, that is how we implemented the Google Maps API calls
 
-I created my Postgress database and a flask server to render the data to JSON format to be consumed by asyncronous calls from the REACT front end, I did not use redux as I use only one state (inspired by this article https://web.archive.org/web/20171020192305/http://blog.reactandbethankful.com/posts/2015/09/15/understanding-the-functional-revolution/ which we read and discussed in our EvolveU program) 
+Alex and I created a Postgress, database a flask server to render the data to JSON format, and as a proof of concept we added a Node/express/Knex server to pull the data to be consumed by asynchronous calls from the REACT front end
+
+The running React front-end app is published in https://cgyab.ca/ The flask server is in https://cgyflask-api-heroku.herokuapp.com/The Node server is in http://backend.cgyab.ca or https://cgy-node-knex.herokuapp.com/The the Postgres database server currently is hosted on Amazon AWS RDS The source code is found in https://github.com/giochajon/CalgaryCommunities
 
 This also serves the purpose of fulfill competency #250 :-)
 
-The running React front-end app is published in: https://calgary-communities.herokuapp.com/ 
-the flask server is in: https://cgyflask-api-heroku.herokuapp.com/
-finally the Postgres database server currently is hosted on Amazon AWS
 
 
 
