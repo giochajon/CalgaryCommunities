@@ -1,6 +1,9 @@
 import React from 'react'
 import CommunityController from './communityController.js'
 import Chart from './Chart'
+import IosRefresh from 'react-ionicons/lib/IosRefresh'
+import IosInformationCircleOutline from 'react-ionicons/lib/IosInformationCircleOutline'
+import About from './About'
 
 
 class GraphController extends React.Component {
@@ -14,6 +17,7 @@ class GraphController extends React.Component {
          data2:{"comm_code":"SNA","name":"SUNALTA","res_cnt":"3268","dwell_cnt":"2172","prsch_chld":"150","ownshp_cnt":"469","hotel_cnt":"1"}
         }
         this.toggle = 0
+        this.showAbout = false
     }
 
 
@@ -68,44 +72,55 @@ a.push (<div className="App">
     <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Population" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.prsch_chld} val2={this.state.data2.prsch_chld} mtitle="Pre-school Children" legendPosition="bottom"/>
     </div>)
 
-
-
-
-      return a 
+    return a 
     } 
+
+    aboutWindow=()=>{
+        this.showAbout = !this.showAbout
+        //console.log (this.showAbout)
+        this.forceUpdate();
+        return <about />
+    }   
+
 
         render() {
             let info = null
+            let comms = null 
+            if (this.showAbout === true) {comms = null; info = <About/>  } 
+            else {
+
+comms =      (           <CommunityController callbackFromParent={this.myCallback1} />
+        <CommunityController callbackFromParent={this.myCallback2}/> );
 
 
 
             if (this.toggle>=2) {
-              info = <button onClick={() => {
+                info = <IosRefresh onClick={() => {
                 this.populateCompData(this.state.city1,this.state.city2)
              } 
-             } > GET DATA</button>
+             } fontSize="60px" color="#347eff" rotate={true} />
   
             }
              
             else {info = this.displayGraph()}
-
-            if (this.city2 = null) {info = null;}
+        }
+             
+            
     
     
             return (
                 <div className="App-header">
-                    
-                <CommunityController callbackFromParent={this.myCallback1} />
-        
-                <CommunityController callbackFromParent={this.myCallback2}/>
+                
+                   
+                {comms}
     
                 
     
                 <div className="bor3">
-                
+               <p className="descrip"> <IosInformationCircleOutline onClick={() => {this.aboutWindow() }} shake={true} fontSize="20px" color="Blue" /> </p>
                 <p> {this.state.city1} VS {this.state.city2} </p>
                 {info}
-
+                
                 
                 
                 </div>
