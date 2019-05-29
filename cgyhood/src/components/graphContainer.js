@@ -33,7 +33,6 @@ class GraphController extends React.Component {
             .then(r => {
                this.setState({ data1: r[0] })
                this.setState({ data2: r[1] })
-            //    this.populateCompData(this.state.city1,this.state.city2)
                this.displayGraph()
                
             })
@@ -58,7 +57,7 @@ class GraphController extends React.Component {
     displayGraph = () => {
         let a = []
         a.push (<div className="App">
-            <h2> {this.state.city1} VS {this.state.city2}</h2>
+            <h4> {this.state.city1} VS {this.state.city2}</h4>
             </div>)
 
         a.push (<div className="App">
@@ -82,7 +81,6 @@ class GraphController extends React.Component {
 
     aboutWindow=()=>{
         this.showAbout = !this.showAbout
-        //console.log (this.showAbout)
         this.forceUpdate();
         return <about />
     }   
@@ -102,10 +100,9 @@ class GraphController extends React.Component {
             );
             if (this.toggle>=2) {
                 this.populateCompData(this.state.city1,this.state.city2)
-                // info = <IosRefresh onClick={
-                //     () => {this.populateCompData(this.state.city1,this.state.city2)} 
-                // } fontSize="60px" color="#347eff" rotate={true} />
-            } else {
+                // info = this.displayGraph()
+            } else if (this.state.city1 != null && this.state.city2 != null){
+                // info = null
                 info = this.displayGraph()
             }
         }
