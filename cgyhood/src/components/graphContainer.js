@@ -1,7 +1,6 @@
 import React from 'react'
 import CommunityController from './communityController.js'
 import Chart from './Chart'
-import IosRefresh from 'react-ionicons/lib/IosRefresh'
 import IosInformationCircleOutline from 'react-ionicons/lib/IosInformationCircleOutline'
 import About from './About'
 
@@ -32,7 +31,7 @@ class GraphController extends React.Component {
             })
             .then(r => r.json())
             .then(r => {
-                if (r.length == 1) {
+                if (r.length === 1) {
                     this.setState({ data1: r[0] })
                     this.setState({ data2: r[0] })
                 } else {
