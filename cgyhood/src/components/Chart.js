@@ -1,40 +1,38 @@
-import React, {Component} from 'react';
-import {HorizontalBar, Doughnut} from 'react-chartjs-2';
+import React, { Component } from 'react';
+import { HorizontalBar, Doughnut } from 'react-chartjs-2';
 import './Chart.css';
 
-class Chart extends Component{
-    constructor(props){
+class Chart extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            chartData : { 
+            chartData: {
                 labels: [this.props.lb1, this.props.lb2],
-                datasets:[
-                  {
-                    label:this.props.tit,
-                    data:[
-                      parseInt(this.props.val1),
-                      parseInt(this.props.val2)
+                datasets: [{
+                    label: this.props.tit,
+                    data: [
+                        parseInt(this.props.val1),
+                        parseInt(this.props.val2)
                     ],
-                    backgroundColor:[
-                      'rgba(255, 99, 132, 0.6)',
-                      'rgba(54, 162, 235, 0.6)',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
                     ]
-                  }
-                ]
-              }
-    
+                }]
+            }
+
         }
     }
 
     static defaultProps = {
-        displayTitle:true,
+        displayTitle: true,
         displayLegend: true,
-        legendPosition:'right',
-        location:'City',
+        legendPosition: 'right',
+        location: 'City',
     }
 
     ShowBarGraph = () => {
-        return(
+        return (
             <div className="chart">
                
                 <HorizontalBar
@@ -70,7 +68,7 @@ class Chart extends Component{
 
 
     ShowDoughnutGraph = () => {
-        return(
+        return (
             <div>        
                 <Doughnut
                     data={this.state.chartData}
@@ -91,19 +89,19 @@ class Chart extends Component{
     }
 
 
-  render(){
-    
+    render() {
 
-    return (
-        <div>
+
+        return (
+            <div>
             <div className = 'GraphContainer'>
             {this.ShowBarGraph()}
             </div>
 
             {/* {this.ShowDoughnutGraph ()} */}
         </div>
-    )
-  }
+        )
+    }
 }
 
 export default Chart;

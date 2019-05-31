@@ -35,7 +35,7 @@ class CommunityController extends React.Component {
 
     populateDropdown() {
         fetch('https://cgyflask-api-heroku.herokuapp.com/community/', {
-        //fetch('http://127.0.0.1:5000/community/', {
+                //fetch('http://127.0.0.1:5000/community/', {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
@@ -54,7 +54,7 @@ class CommunityController extends React.Component {
 
     async populateData(comm) {
         await fetch('https://cgyflask-api-heroku.herokuapp.com/community/' + comm + "/", {
-        //await fetch('http://localhost:5000/community/' + comm + "/", {
+                //await fetch('http://localhost:5000/community/' + comm + "/", {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
@@ -131,99 +131,99 @@ class CommunityController extends React.Component {
 
     }
 
-  
+
 
 
     onClickHandler = event => {
         const value = event.target.innerHTML;
 
-        
-        
-                let p1 = new Promise(
-                    (resolve, reject) => {
-                        this.populateData(value)
-                    });
-                p1.then(
-                    function(val) {
-                        this.setObtainedValues()
-                        this.setState({ comm: value });
-                        console.log(val)
-                    }).catch(
-                    (reason) => {
-                        this.getLocal(value)
-                        this.setState({ comm: value });
-                        console.log(reason)
-                    });
 
 
-        this.props.callbackFromParent(value)                
-        this.getLocal(value)
-        
-
-        
-
-/*
-        let promise3 = new Promise(resolve, reject) => {
-            if (this.populateData(value)) {
-               
-            } else {
+        let p1 = new Promise(
+            (resolve, reject) => {
+                this.populateData(value)
+            });
+        p1.then(
+            function(val) {
+                this.setObtainedValues()
+                this.setState({ comm: value });
+                console.log(val)
+            }).catch(
+            (reason) => {
                 this.getLocal(value)
-            }
-        });
-*/
+                this.setState({ comm: value });
+                console.log(reason)
+            });
+
+
+        this.props.callbackFromParent(value)
+        this.getLocal(value)
+
+
+
+
+        /*
+                let promise3 = new Promise(resolve, reject) => {
+                    if (this.populateData(value)) {
+                       
+                    } else {
+                        this.getLocal(value)
+                    }
+                });
+        */
         //console.log("pst", this.cityData)
         this.setState({ comm: value });
     }
 
-  
+
 
 
 
     render() {
-        
 
-        let theSector; 
-        switch  (this.sector) {
-        case "SOUTHEAST":
-            theSector = "SE"
-        break; 
-        case "SOUTHWEST":
-            theSector = "SW"
-        break;
-        case "SOUTH":
-            theSector = "S"
-        break;
-        case "NORTHEAST":
-            theSector = "NE"
-        break;
-        case "NORTHWEST":
-            theSector = "NW"
-        break;
-        case "CENTRE":
-            theSector = "CENTRE"
-        break;
-        case "NORTH":
-            theSector = "N"
-        break;
-        case "EAST":
-            theSector = "E"
-        break;
-        case "WEST":
-            theSector = "W"
-        break;
-        default: 
-        theSector = null
+
+        let theSector;
+        switch (this.sector) {
+            case "SOUTHEAST":
+                theSector = "SE"
+                break;
+            case "SOUTHWEST":
+                theSector = "SW"
+                break;
+            case "SOUTH":
+                theSector = "S"
+                break;
+            case "NORTHEAST":
+                theSector = "NE"
+                break;
+            case "NORTHWEST":
+                theSector = "NW"
+                break;
+            case "CENTRE":
+                theSector = "CENTRE"
+                break;
+            case "NORTH":
+                theSector = "N"
+                break;
+            case "EAST":
+                theSector = "E"
+                break;
+            case "WEST":
+                theSector = "W"
+                break;
+            default:
+                theSector = null
 
         }
 
 
 
-       
+
 
 
         return (
-            
-            
+
+
 
 
 
