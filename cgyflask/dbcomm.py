@@ -9,7 +9,8 @@ def retreive(consulta,condicion):
     try:
         #connection = psycopg2.connect(user = "postgres",password = "postgres",host = "192.168.1.69",port = "5432",database = "cgyinfo")
         #connection = psycopg2.connect(user = "postgres",password = "postgres",host = "10.44.22.93",port = "5432",database = "cgyinfo")
-        connection = psycopg2.connect(user = "qsecofrmaster",password = "P!68Yhzw&M3Ed",host = "rainforester.cn8i3ndstyb0.us-east-2.rds.amazonaws.com",port = "5432",database = "cgyinfo")
+        connection = psycopg2.connect(user = _user,password = _passwor,host = _connstring,port = "5432",database = "cgyinfo")
+        
         connection.autocommit = True
         cursor = connection.cursor()
         ###cursor.execute("select comm_code, name, sector, class, res_cnt,dwell_cnt, comm_structure from census2018 where name = %s",(nombre,))
