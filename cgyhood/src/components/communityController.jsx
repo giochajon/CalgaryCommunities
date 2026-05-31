@@ -32,8 +32,7 @@ class CommunityController extends React.Component {
 
 
     populateDropdown() {
-        fetch('https://cgyflask-api-heroku.herokuapp.com/community/', {
-                //fetch('http://127.0.0.1:5000/community/', {
+        fetch('/community/', {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
@@ -51,8 +50,7 @@ class CommunityController extends React.Component {
 
 
     async populateData(comm) {
-        await fetch('https://cgyflask-api-heroku.herokuapp.com/community/' + comm + "/", {
-                //await fetch('http://localhost:5000/community/' + comm + "/", {
+        await fetch('/community/' + comm + "/", {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'

@@ -2,9 +2,8 @@ require('dotenv').config();
 
 var knex = require('knex')({
   client: 'pg',
-  version: '7.2',
   connection: {
-    host : 'rainforester.cn8i3ndstyb0.us-east-2.rds.amazonaws.com',
+    host : process.env.db_host,
     user : process.env.db_user,
     password : process.env.db_password,
     database : process.env.db_name

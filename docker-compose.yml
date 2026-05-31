@@ -1,0 +1,54 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME:-cgyinfo}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME:-cgyinfo}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  cgyflask:
+    build: ./cgyflask
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-cgyinfo}
+      DB_PORT: 5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  cgydata_express:
+    build: ./cgydata_express
+    environment:
+      db_user: ${DB_USER}
+      db_password: ${DB_PASSWORD}
+      db_host: postgres
+      db_name: ${DB_NAME:-cgyinfo}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  cgyhood:
+    build: ./cgyhood
+    ports:
+      - "80:80"
+    depends_on:
+      - cgyflask
+      - cgydata_express
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

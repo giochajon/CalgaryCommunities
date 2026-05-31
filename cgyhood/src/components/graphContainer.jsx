@@ -23,7 +23,7 @@ class GraphController extends React.Component {
 
     populateCompData(comm1, comm2) {
 
-        let linka = "https://cgy-node-knex.herokuapp.com/compare/" + comm1 + "/" + comm2
+        let linka = "/compare/" + comm1 + "/" + comm2
         fetch(linka, {
                 method: 'GET',
                 mode: 'cors',
