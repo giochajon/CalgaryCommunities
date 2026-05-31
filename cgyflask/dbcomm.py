@@ -1,15 +1,21 @@
+import os
 import psycopg2
 import json
 from psycopg2.extensions import AsIs
 
+_user = os.environ.get("DB_USER", "")
+_passwor = os.environ.get("DB_PASSWORD", "")
+_connstring = os.environ.get("DB_HOST", "")
+_dbname = os.environ.get("DB_NAME", "cgyinfo")
+_port = os.environ.get("DB_PORT", "5432")
+
 
 def retreive(consulta,condicion):
     resultado =""
+    connection = None
 
     try:
-        #connection = psycopg2.connect(user = "postgres",password = "postgres",host = "192.168.1.69",port = "5432",database = "cgyinfo")
-        #connection = psycopg2.connect(user = "postgres",password = "postgres",host = "10.44.22.93",port = "5432",database = "cgyinfo")
-        connection = psycopg2.connect(user = _user,password = _passwor,host = _connstring,port = "5432",database = "cgyinfo")
+        connection = psycopg2.connect(user=_user, password=_passwor, host=_connstring, port=_port, database=_dbname)
         
         connection.autocommit = True
         cursor = connection.cursor()

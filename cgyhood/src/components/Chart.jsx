@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
-import { HorizontalBar, Doughnut } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar, Doughnut } from 'react-chartjs-2';
 import './Chart.css';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend);
 
 class Chart extends Component {
     constructor(props) {
@@ -34,32 +46,27 @@ class Chart extends Component {
     ShowBarGraph = () => {
         return (
             <div className="chart">
-               
-                <HorizontalBar
+                <Bar
                     data={this.state.chartData}
                     width={100}
                     height={30}
                     options={{
+                        indexAxis: 'y',
                         maintainAspectRatio: true,
-                        title:{ 
-                            display:this.props.displayTitle,
-                            text:this.props.mtitle,
-                            fontSize:15
-                        },
-                        legend:{
-                            display: false,
-                            // displayLegend:true,
-                            // display:this.props.displayLegend,
-                            // position:this.props.legendPosition
+                        plugins: {
+                            title: {
+                                display: this.props.displayTitle,
+                                text: this.props.mtitle,
+                                font: { size: 15 },
+                            },
+                            legend: { display: false },
                         },
                         scales: {
-                            xAxes: [{
-                              ticks: {
-                                beginAtZero: true,
-                                min: 0
-                              }    
-                            }]
-                          }
+                            x: {
+                                min: 0,
+                                ticks: { beginAtZero: true },
+                            },
+                        },
                     }}
                 />
             </div>
@@ -69,19 +76,21 @@ class Chart extends Component {
 
     ShowDoughnutGraph = () => {
         return (
-            <div>        
+            <div>
                 <Doughnut
                     data={this.state.chartData}
                     options={{
-                        title:{
-                            display:this.props.displayTitle,
-                            text:'Largest Cities In '+this.props.location,
-                            fontSize:15
+                        plugins: {
+                            title: {
+                                display: this.props.displayTitle,
+                                text: 'Largest Cities In ' + this.props.location,
+                                font: { size: 15 },
+                            },
+                            legend: {
+                                display: this.props.displayLegend,
+                                position: this.props.legendPosition,
+                            },
                         },
-                        legend:{
-                            display:this.props.displayLegend,
-                            position:this.props.legendPosition
-                        }
                     }}
                 />
             </div>

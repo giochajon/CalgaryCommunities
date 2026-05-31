@@ -3,7 +3,6 @@ import dbcomm
 from flask import Flask
 from flask_cors import CORS
 import json
-from flask_sslify import SSLify
 
 
 app = Flask(__name__)
@@ -28,10 +27,5 @@ def getdata(name):
     return json.dumps(lacom)
 
 if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
     port = int(os.environ.get('PORT', 5000))
-    #app.run(host='0.0.0.0', port=port, ssl_context='adhoc')
     app.run(host='0.0.0.0', port=port)
-    sslify = SSLify(app)
-    # if 'DYNO' in os.environ: # only trigger SSLify if the app is running on Heroku
-    #     sslify = SSLify(app)
