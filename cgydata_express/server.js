@@ -28,14 +28,15 @@ function formatArray(x) {
 
 
 app.get('/community/:name', cors(), (req, res) => {
-    queries.get_community_by_name(req.params.name).then(x => res.send(x));
+    queries.get_community_by_name(req.params.name)
+        .then(x => res.send(x))
+        .catch(err => { console.error(err); res.status(500).json({ error: err.message }); });
 })
 
 app.get('/compare/:comm1/:comm2', cors(), (req, res) => {
-    //queries.get_community_by_name(req.params.name).then(x => res.send(x));
-    //res.send (req.params.comm1+ " and  " +req.params.comm2)
-    queries.get_compare_two(req.params.comm1, req.params.comm2).then(x => res.send(x));
-
+    queries.get_compare_two(req.params.comm1, req.params.comm2)
+        .then(x => res.send(x))
+        .catch(err => { console.error(err); res.status(500).json({ error: err.message }); });
 })
 
 
