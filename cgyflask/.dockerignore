@@ -1,5 +1,6 @@
-venv/
-__pycache__/
-*.pyc
-*.pyo
-.env
+cgyflask/venv/
+cgyflask/__pycache__/
+cgyflask/*.pyc
+cgyflask/.env
+cgyhood/
+cgydata_express/

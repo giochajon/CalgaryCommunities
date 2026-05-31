@@ -32,7 +32,8 @@ class CommunityController extends React.Component {
 
 
     populateDropdown() {
-        fetch('/community/', {
+        const base = import.meta.env.VITE_FLASK_URL || ''
+        fetch(base + '/community/', {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'
@@ -50,7 +51,8 @@ class CommunityController extends React.Component {
 
 
     async populateData(comm) {
-        await fetch('/community/' + comm + "/", {
+        const base = import.meta.env.VITE_FLASK_URL || ''
+        await fetch(base + '/community/' + comm + "/", {
                 method: 'GET',
                 mode: 'cors',
                 dataType: 'json'

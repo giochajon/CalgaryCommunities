@@ -1,0 +1,79 @@
+databases:
+  - name: cgyinfo-db
+    plan: free
+    databaseName: cgyinfo
+
+services:
+
+  # Flask API — seeds the database automatically on first start
+  - type: web
+    name: cgyflask
+    env: docker
+    dockerfilePath: ./cgyflask/Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: DB_USER
+        fromDatabase:
+          name: cgyinfo-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: cgyinfo-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: cgyinfo-db
+          property: host
+      - key: DB_NAME
+        fromDatabase:
+          name: cgyinfo-db
+          property: database
+      - key: DB_PORT
+        fromDatabase:
+          name: cgyinfo-db
+          property: port
+
+  # Express API
+  - type: web
+    name: cgydata-express
+    env: docker
+    dockerfilePath: ./cgydata_express/Dockerfile
+    dockerContext: ./cgydata_express
+    plan: free
+    envVars:
+      - key: db_user
+        fromDatabase:
+          name: cgyinfo-db
+          property: user
+      - key: db_password
+        fromDatabase:
+          name: cgyinfo-db
+          property: password
+      - key: db_host
+        fromDatabase:
+          name: cgyinfo-db
+          property: host
+      - key: db_name
+        fromDatabase:
+          name: cgyinfo-db
+          property: database
+
+  # React front-end — static site built with Vite
+  # After cgyflask and cgydata-express are live, set VITE_FLASK_URL and
+  # VITE_EXPRESS_URL in the Render dashboard, then redeploy this service.
+  - type: web
+    name: cgyhood
+    env: static
+    buildCommand: npm --prefix cgyhood install && npm --prefix cgyhood run build
+    staticPublishPath: ./cgyhood/dist
+    pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_FLASK_URL
+        sync: false
+      - key: VITE_EXPRESS_URL
+        sync: false

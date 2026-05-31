@@ -77,6 +77,46 @@ Navigate to [http://localhost](http://localhost)
 
 ---
 
+## Deploying to Render
+
+The `render.yaml` blueprint deploys all four services (database, Flask, Express, React) in one shot.
+
+### Steps
+
+**1. Push the repository to GitHub** (if you haven't already)
+
+**2. Create a new Blueprint on Render**
+
+- Go to [dashboard.render.com](https://dashboard.render.com) → **New** → **Blueprint**
+- Connect your GitHub account and select the `CalgaryCommunities` repository
+- Render will read `render.yaml` and show you the four services to create — click **Apply**
+
+**3. Wait for Flask and Express to finish deploying**
+
+Render will show live build logs. Flask automatically seeds the database (all 208 communities) on its first start.
+
+**4. Set the API URLs for the React app**
+
+Once `cgyflask` and `cgydata-express` are live you'll see their public URLs in the Render dashboard (e.g. `https://cgyflask.onrender.com`).
+
+- Go to the **cgyhood** service → **Environment**
+- Add two variables:
+
+| Key | Value |
+|---|---|
+| `VITE_FLASK_URL` | `https://cgyflask.onrender.com` |
+| `VITE_EXPRESS_URL` | `https://cgydata-express.onrender.com` |
+
+- Click **Save Changes** — Render will automatically redeploy the static site with the correct API URLs
+
+**5. Open the app**
+
+The URL is shown at the top of the `cgyhood` service page in the Render dashboard.
+
+> **Free tier note:** Web services on Render's free plan spin down after 15 minutes of inactivity. The first request after a sleep period may take 30–60 seconds while the service wakes up.
+
+---
+
 ## Running locally (without Docker)
 
 You need Node 20+, Python 3.12+, and a running PostgreSQL instance with the `cgyinfo` database loaded from `db/init.sql`.

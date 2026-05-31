@@ -23,7 +23,8 @@ class GraphController extends React.Component {
 
     populateCompData(comm1, comm2) {
 
-        let linka = "/compare/" + comm1 + "/" + comm2
+        const base = import.meta.env.VITE_EXPRESS_URL || ''
+        let linka = base + "/compare/" + comm1 + "/" + comm2
         fetch(linka, {
                 method: 'GET',
                 mode: 'cors',
