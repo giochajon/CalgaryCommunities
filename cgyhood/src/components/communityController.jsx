@@ -26,10 +26,8 @@ class CommunityController extends React.Component {
 
 
 
-    componentWillMount() {
-
+    componentDidMount() {
         this.populateDropdown()
-        //this.populateData('ALTADORE')
     }
 
 

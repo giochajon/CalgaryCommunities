@@ -1,7 +1,7 @@
 import React from 'react'
-import CommunityController from './communityController.js'
+import CommunityController from './communityController'
 import Chart from './Chart'
-import IosInformationCircleOutline from 'react-ionicons/lib/IosInformationCircleOutline'
+import { IoInformationCircleOutline } from 'react-icons/io5'
 import About from './About'
 
 
@@ -60,24 +60,24 @@ class GraphController extends React.Component {
 
     displayGraph = () => {
         let a = []
-        a.push(<div className="App">
+        a.push(<div className="App" key="header">
             <h4> {this.state.city1} VS {this.state.city2}</h4>
             </div>)
 
-        a.push(<div className="App">
-            <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Population" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.res_cnt} val2={this.state.data2.res_cnt} mtitle="Population" legendPosition="bottom"/>
+        a.push(<div className="App" key="pop">
+            <Chart key={`pop-${this.state.data1.name}-${this.state.data2.name}`} tit="Population" lb1={this.state.data1.name} lb2={this.state.data2.name} val1={this.state.data1.res_cnt} val2={this.state.data2.res_cnt} mtitle="Population" legendPosition="bottom"/>
             </div>)
 
-        a.push(<div className="App">
-            <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Dwellings" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.dwell_cnt} val2={this.state.data2.dwell_cnt} mtitle="Dwellings" legendPosition="bottom"/>
+        a.push(<div className="App" key="dwell">
+            <Chart key={`dwell-${this.state.data1.name}-${this.state.data2.name}`} tit="Dwellings" lb1={this.state.data1.name} lb2={this.state.data2.name} val1={this.state.data1.dwell_cnt} val2={this.state.data2.dwell_cnt} mtitle="Dwellings" legendPosition="bottom"/>
             </div>)
 
-        a.push(<div className="App">
-            <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Home Owners" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.ownshp_cnt} val2={this.state.data2.ownshp_cnt} mtitle="Home Owners" legendPosition="bottom"/>
+        a.push(<div className="App" key="owners">
+            <Chart key={`owners-${this.state.data1.name}-${this.state.data2.name}`} tit="Home Owners" lb1={this.state.data1.name} lb2={this.state.data2.name} val1={this.state.data1.ownshp_cnt} val2={this.state.data2.ownshp_cnt} mtitle="Home Owners" legendPosition="bottom"/>
             </div>)
 
-        a.push(<div className="App">
-            <Chart key={this.state.data1.name} key={this.state.data2.name} tit="Pre-school Children" lb1={this.state.data1.name} lb2 ={this.state.data2.name} val1={this.state.data1.prsch_chld} val2={this.state.data2.prsch_chld} mtitle="Pre-school Children" legendPosition="bottom"/>
+        a.push(<div className="App" key="prsch">
+            <Chart key={`prsch-${this.state.data1.name}-${this.state.data2.name}`} tit="Pre-school Children" lb1={this.state.data1.name} lb2={this.state.data2.name} val1={this.state.data1.prsch_chld} val2={this.state.data2.prsch_chld} mtitle="Pre-school Children" legendPosition="bottom"/>
             </div>)
 
         return a
@@ -116,12 +116,10 @@ class GraphController extends React.Component {
                 {/* {comms} */}
                 <div className="bor3">
                     <p className="descrip"> 
-                        <IosInformationCircleOutline 
-                            onClick = {
-                                () => {this.aboutWindow() }
-                            } 
-                            shake={true} fontSize="20px" color="Blue" 
-                        /> 
+                        <IoInformationCircleOutline
+                            onClick={() => { this.aboutWindow() }}
+                            size="20px" color="Blue" style={{ cursor: 'pointer' }}
+                        />
                     </p>
                     {/* <p> {this.state.city1} VS {this.state.city2} </p> */}
                    
